@@ -11,9 +11,9 @@ def display_menu():
     print("DIGCORE PASSWORD MANAGER")
     print("=" * 50)
     print("\nOptions:")
-    print("  1. Add stored credentials")
-    print("  2. View stored credentials")
-    print("  3. Exit")
+    print("  1. Add stored credentials ✨")
+    print("  2. View stored credentials 🔍")
+    print("  3. Exit 🚪")
     print("=" * 50)
 
 
