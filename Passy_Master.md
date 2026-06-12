@@ -20,13 +20,13 @@ Functions:
 
 rot3_encrypt(text):
   - For each character in text:
-    - If lowercase letter: rotate forward by 3 within 'a'..'z'
-    - If uppercase letter: rotate forward by 3 within 'A'..'Z'
+    - If lowercase letter: rotate forward by 5 within 'a'..'z'
+    - If uppercase letter: rotate forward by 5 within 'A'..'Z'
     - Else: keep character unchanged
   - Return joined encrypted string
 
 rot3_decrypt(text):
-  - Same as rot3_encrypt but rotate backward by 3
+  - Same as rot3_encrypt but rotate backward by 5
   - Return joined decrypted string
 
 ensure_credentials_file_exists():

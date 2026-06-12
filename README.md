@@ -5,7 +5,7 @@ A secure password manager application developed for DigiCore by Apps2U.
 ## Quick Start
 
 ```bash
-python3 password_manager.py
+python3 Passy_Master.py
 ```
 
 ## Overview
@@ -23,7 +23,7 @@ This application helps DigiCore staff securely store and retrieve login credenti
 
 ## Project Structure
 
-- `password_manager.py` - Main application (ready to run)
+- `Passy_Master.py` - Main application (ready to run)
 - `SETUP.md` - Detailed setup and usage guide
 - `credentials.txt` - Auto-generated storage file (created on first run)
 

@@ -1,4 +1,5 @@
 from pathlib import Path
+from menu import display_menu, get_user_choice
 
 # Configuration
 CREDENTIALS_FILE = "credentials.txt"
@@ -144,29 +145,7 @@ def view_credentials():
         print(f"\n✗ Error viewing credentials: {e}")
 
 
-def display_menu():
-    """
-    Display the main options menu
-    """
-    print("\n" + "=" * 50)
-    print("DIGCORE PASSWORD MANAGER")
-    print("=" * 50)
-    print("\nOptions:")
-    print("  1. Add stored credentials")
-    print("  2. View stored credentials")
-    print("  3. Exit")
-    print("=" * 50)
 
-
-def get_user_choice():
-    """
-    Get and validate user menu choice
-    """
-    while True:
-        choice = input("\nEnter your choice (1-3): ").strip()
-        if choice in ['1', '2', '3']:
-            return choice
-        print("✗ Invalid choice. Please enter 1, 2, or 3.")
 
 
 def main():
