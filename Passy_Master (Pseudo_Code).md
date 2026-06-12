@@ -74,9 +74,5 @@ Security notes:
 - ROT3-style obfuscation is not secure; use proper encryption for production.
 - Consider file permissions and encrypted storage for real applications.
 
-Security notes (pseudo):
-  - ROT3 is NOT secure; use proper encryption for real use
-  - Consider file permissions and encrypted storage in production
-
 ---
 
