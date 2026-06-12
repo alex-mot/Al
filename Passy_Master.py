@@ -1,50 +1,34 @@
-#!/usr/bin/env python3
-"""
-DigiCore Password Manager
-A secure password manager application for Apps2U
-Stores and retrieves login credentials with ROT3 encryption
-"""
-
-import os
 from pathlib import Path
-
 
 # Configuration
 CREDENTIALS_FILE = "credentials.txt"
+CHARSET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`~!@#$%^&*()_-=|\\}]{["\':;?/>.<, '
 
 
 def rot3_encrypt(text):
     """
-    Encrypt text using ROT3 cipher (rotate each letter by 3 positions)
+    Encrypt text using ROT3 cipher over the full custom character set.
     """
     encrypted = []
     for char in text:
-        if 'a' <= char <= 'z':
-            # Rotate lowercase letters
-            encrypted.append(chr((ord(char) - ord('a') + 3) % 26 + ord('a')))
-        elif 'A' <= char <= 'Z':
-            # Rotate uppercase letters
-            encrypted.append(chr((ord(char) - ord('A') + 3) % 26 + ord('A')))
+        if char in CHARSET:
+            index = CHARSET.find(char)
+            encrypted.append(CHARSET[(index + 5) % len(CHARSET)])
         else:
-            # Keep non-alphabetic characters unchanged
             encrypted.append(char)
     return ''.join(encrypted)
 
 
 def rot3_decrypt(text):
     """
-    Decrypt text using ROT3 cipher (rotate each letter back by 3 positions)
+    Decrypt text using ROT3 cipher over the full custom character set.
     """
     decrypted = []
     for char in text:
-        if 'a' <= char <= 'z':
-            # Rotate lowercase letters backwards
-            decrypted.append(chr((ord(char) - ord('a') - 3) % 26 + ord('a')))
-        elif 'A' <= char <= 'Z':
-            # Rotate uppercase letters backwards
-            decrypted.append(chr((ord(char) - ord('A') - 3) % 26 + ord('A')))
+        if char in CHARSET:
+            index = CHARSET.find(char)
+            decrypted.append(CHARSET[(index - 5) % len(CHARSET)])
         else:
-            # Keep non-alphabetic characters unchanged
             decrypted.append(char)
     return ''.join(decrypted)
 
@@ -112,6 +96,7 @@ def view_credentials():
         # Check if file exists and has content
         if not Path(CREDENTIALS_FILE).exists() or Path(CREDENTIALS_FILE).stat().st_size == 0:
             print("No credentials stored yet.")
+            input("\nPress Enter to return to main menu...")
             return
         
         # Read and display credentials
@@ -120,6 +105,7 @@ def view_credentials():
         
         if not credentials:
             print("No credentials stored yet.")
+            input("\nPress Enter to return to main menu...")
             return
         
         # Display each credential with formatting
@@ -152,6 +138,7 @@ def view_credentials():
                 print(f"Entry {index}: [Error decrypting - {e}]")
         
         print(f"\n{'=' * 70}\n")
+        input("\nPress Enter to return to main menu...")
         
     except Exception as e:
         print(f"\n✗ Error viewing credentials: {e}")
